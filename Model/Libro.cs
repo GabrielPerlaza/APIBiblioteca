@@ -1,7 +1,10 @@
-﻿namespace APIBiblioteca.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace APIBiblioteca.Model
 {
     public class Libro
     {
+        [Key]
         public int IdLibro { get; set; }
 
         public string? Name { get; set; }

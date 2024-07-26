@@ -1,7 +1,10 @@
-﻿namespace APIBiblioteca.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace APIBiblioteca.Model
 {
     public partial class Prestamo
     {
+        [Key]
         public int IdPrestamo { get; set; }
 
         public string? NumeroDocumento { get; set; }

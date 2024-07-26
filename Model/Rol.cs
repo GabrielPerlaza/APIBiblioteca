@@ -1,8 +1,10 @@
-﻿namespace APIBiblioteca.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace APIBiblioteca.Model
 {
     public class Rol
     {
-        public int IdRol { get; set; }
+        [Key] public int IdRol { get; set; }
 
         public string? Nombre { get; set; }
 

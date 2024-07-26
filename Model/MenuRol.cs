@@ -1,7 +1,10 @@
-﻿namespace APIBiblioteca.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace APIBiblioteca.Model
 {
     public class MenuRol
     {
+        [Key]
         public int IdMenuRol { get; set; }
 
         public int? IdMenu { get; set; }
