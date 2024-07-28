@@ -15,6 +15,8 @@ namespace APIBiblioteca.Model
         public bool? EsActivo { get; set; }
         public int? IdCategoria { get; set; }
 
+        public virtual Categoria IdCategoriaNavigation { get; set; }
+
 
 
     }
