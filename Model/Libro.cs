@@ -7,9 +7,9 @@ namespace APIBiblioteca.Model
         [Key]
         public int IdLibro { get; set; }
 
-        public string? Name { get; set; }
+        public string? Nombre { get; set; }
 
-        public string? Description { get; set; }
+        public string? Descripcion { get; set; }
 
         public DateTime? FechaRegistro { get; set; }
         public bool? EsActivo { get; set; }
