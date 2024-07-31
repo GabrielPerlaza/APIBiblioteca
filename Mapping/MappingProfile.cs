@@ -8,6 +8,7 @@ namespace APIBiblioteca.Mapping
         public MappingProfile() 
         {
             CreateMap<Libro, Libro>();
+            
         }
     }
 }

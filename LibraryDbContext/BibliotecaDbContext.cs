@@ -14,6 +14,8 @@ namespace APIBiblioteca.LibraryDbContext
         public DbSet<Rol> Roles {  get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<NumeroDocumento> NumeroDocumentos { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-SKRMAA5;Database=BibliotecaDB;Integrated Security=True;TrustServerCertificate=True;");

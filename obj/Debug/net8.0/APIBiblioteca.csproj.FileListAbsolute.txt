@@ -135,3 +135,5 @@ C:\Users\User\Documents\Gabo\Proyecto V&V\APIBiblioteca\APIBiblioteca\obj\Debug\
 C:\Users\User\Documents\Gabo\Proyecto V&V\APIBiblioteca\APIBiblioteca\obj\Debug\net8.0\APIBiblioteca.pdb
 C:\Users\User\Documents\Gabo\Proyecto V&V\APIBiblioteca\APIBiblioteca\obj\Debug\net8.0\APIBiblioteca.genruntimeconfig.cache
 C:\Users\User\Documents\Gabo\Proyecto V&V\APIBiblioteca\APIBiblioteca\obj\Debug\net8.0\ref\APIBiblioteca.dll
+C:\Users\User\Documents\Gabo\Proyecto V&V\APIBiblioteca\APIBiblioteca\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\User\Documents\Gabo\Proyecto V&V\APIBiblioteca\APIBiblioteca\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

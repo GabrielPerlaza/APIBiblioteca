@@ -11,6 +11,8 @@ namespace APIBiblioteca.Model
 
         public string? Descripcion { get; set; }
 
+        public int? Stock {  get; set; }
+
         public DateTime? FechaRegistro { get; set; }
         public bool? EsActivo { get; set; }
         public int? IdCategoria { get; set; }
