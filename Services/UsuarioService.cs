@@ -61,6 +61,66 @@ namespace APIBiblioteca.Services
             }
         }
 
+        public async Task<bool> Editar(Usuario modelo)
+        {
+            
+            try
+            {
+                var usuarioEncontrado = await _usuarioRepository.Obtener(
+                    u => u.IdUsuario == modelo.IdUsuario
+                    );
+
+                if(usuarioEncontrado == null)
+                {
+                    throw new TaskCanceledException("No se encontro el usuario");
+                }
+
+                usuarioEncontrado.Nombre = modelo.Nombre;
+                usuarioEncontrado.Correo = modelo.Correo;
+                usuarioEncontrado.Contrasena = modelo.Contrasena;
+                usuarioEncontrado.IdRol = modelo.IdRol;
+                usuarioEncontrado.EsActivo = modelo.EsActivo;
+                bool respuesta = await _usuarioRepository.Editar(usuarioEncontrado);
+                if (!respuesta)
+                {
+                    throw new TaskCanceledException("No se encontro el usuario");
+                }
+                return respuesta;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> Eliminar(int idUsuario)
+        {
+            try
+            {
+                var usuarioEncontrado = await _usuarioRepository.Obtener(
+                    u => u.IdUsuario == idUsuario
+                    );
+                if (usuarioEncontrado == null) {
+                    throw new TaskCanceledException("No se pudo encontrar el usuario");
+                }
+
+                bool respuesta = await _usuarioRepository.Eliminar(usuarioEncontrado);
+
+                if (!respuesta)
+                {
+                    throw new TaskCanceledException("No se pudo eliminar");
+                }
+
+                return respuesta;
+
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
+
 
     }
 }

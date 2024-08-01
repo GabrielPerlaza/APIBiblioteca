@@ -10,6 +10,7 @@ namespace APIBiblioteca.Model
         public string? Correo { get; set; }
         public string? Contrasena { get; set; }
         public int IdRol {  get; set; }
+        public bool EsActivo { get; set; }
         public virtual Rol? IdRolNavigation { get; set; }
 
 
