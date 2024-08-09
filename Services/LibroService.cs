@@ -2,18 +2,18 @@
 using APIBiblioteca.Model;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using APIBiblioteca.Repository.Contrato;
 using System.Linq.Expressions;
 namespace APIBiblioteca.Services
 {
     public class LibroService
     {
-        private readonly GenericRepository<Libro> _libroRepository;
-        private readonly IMapper _mapper;
+        private readonly IGenericRepository<Libro> _libroRepository;
+ 
 
-        public LibroService(GenericRepository<Libro> libroRepository, IMapper mapper)
+        public LibroService(IGenericRepository<Libro> libroRepository)
         {
             _libroRepository = libroRepository;
-            _mapper = mapper;
         }
 
         public async Task<List<Libro>> Lista()
@@ -61,9 +61,13 @@ namespace APIBiblioteca.Services
                     throw new TaskCanceledException("El producto no existe");
                 }
 
-                _mapper.Map(modelo, libroEncontrado);
+                libroEncontrado.Descripcion = modelo.Descripcion;
+                libroEncontrado.Stock = modelo.Stock;
+                libroEncontrado.FechaRegistro = modelo.FechaRegistro;
+                libroEncontrado.IdCategoria = modelo.IdCategoria;
+                libroEncontrado.Nombre = modelo.Nombre;
 
-                
+
                 await _libroRepository.Editar(libroEncontrado);
 
                 return true;
@@ -80,14 +84,14 @@ namespace APIBiblioteca.Services
 
             try
             {
-                var libroEncontrado = _libroRepository.Obtener(
-                    p => p.IdLibro == id
-                    );
+                    
+                var libroEncontrado = await _libroRepository.Obtener(p => p.IdLibro == id);
+
                 if (libroEncontrado == null)
                 {
                     throw new TaskCanceledException("No se logro encontrar el producto");
                 }
-                bool respuesta = await _libroRepository.Eliminar(_mapper.Map<Libro>(libroEncontrado));
+                bool respuesta = await _libroRepository.Eliminar(libroEncontrado);
 
                 if (!respuesta)
                 {

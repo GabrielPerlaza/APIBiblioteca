@@ -1,9 +1,10 @@
 ﻿using APIBiblioteca.LibraryDbContext;
 using APIBiblioteca.Model;
+using APIBiblioteca.Repository.Contrato;
 
 namespace APIBiblioteca.Repository
 {
-    public class PrestamoRepository : GenericRepository<Prestamo>
+    public class PrestamoRepository : GenericRepository<Prestamo>, IPrestamoRepository
     {
         private readonly BibliotecaDbContext _bibliotecaDbContext;
         public PrestamoRepository(BibliotecaDbContext bibliotecaDbContext) : base(bibliotecaDbContext)

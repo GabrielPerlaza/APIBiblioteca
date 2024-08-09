@@ -1,13 +1,13 @@
 ﻿using APIBiblioteca.Model;
 using APIBiblioteca.Repository;
-
+using APIBiblioteca.Repository.Contrato;
 namespace APIBiblioteca.Services
 {
     public class CategoriaService
     {
-        private readonly GenericRepository<Categoria> _categoriaRepository;
+        private readonly IGenericRepository<Categoria> _categoriaRepository;
 
-        public CategoriaService(GenericRepository<Categoria> categoriaRepository)
+        public CategoriaService(IGenericRepository<Categoria> categoriaRepository)
         {
             _categoriaRepository = categoriaRepository;
         }

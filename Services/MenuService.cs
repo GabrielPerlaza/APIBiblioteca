@@ -1,16 +1,17 @@
 ﻿using APIBiblioteca.Model;
 using APIBiblioteca.Repository;
+using APIBiblioteca.Repository.Contrato;
 
 namespace APIBiblioteca.Services
 {
     public class MenuService
     {
-        private readonly GenericRepository<Usuario> _usuarioRepository;
-        private readonly GenericRepository<MenuRol> _menuRolRepository;
-        private readonly GenericRepository<Menu> _menuRepository;
+        private readonly IGenericRepository<Usuario> _usuarioRepository;
+        private readonly IGenericRepository<MenuRol> _menuRolRepository;
+        private readonly IGenericRepository<Menu> _menuRepository;
 
 
-        public MenuService(GenericRepository<Usuario> usuarioRepository, GenericRepository<MenuRol> menuRolRepository, GenericRepository<Menu> menuRepository)
+        public MenuService(IGenericRepository<Usuario> usuarioRepository, IGenericRepository<MenuRol> menuRolRepository, IGenericRepository<Menu> menuRepository)
         {
             _usuarioRepository = usuarioRepository;
             _menuRolRepository = menuRolRepository;

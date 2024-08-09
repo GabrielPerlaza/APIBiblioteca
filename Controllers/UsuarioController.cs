@@ -1,7 +1,6 @@
 ﻿using APIBiblioteca.Services;
 using APIBiblioteca.Model;
 using APIBiblioteca.Response;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,50 +9,65 @@ namespace APIBiblioteca.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LibroController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
-        private readonly LibroService _libroService;
-        public LibroController(LibroService libroservice)
+        // GET: api/<UsuarioController>
+        private readonly UsuarioService _usuarioService;
+
+        public UsuarioController(UsuarioService usuarioService)
         {
-            _libroService = libroservice;
+            _usuarioService = usuarioService;
         }
 
-
-        // GET: api/<LibroController>
         [HttpGet]
         [Route("Lista")]
         public async Task<IActionResult> Lista()
         {
-            var rsp = new Response<List<Libro>>();
-
+            var rsp = new Response<List<Usuario>>();
             try
             {
                 rsp.Status = true;
-                rsp.value = await _libroService.Lista();
+                rsp.value = await _usuarioService.Lista();
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 rsp.Status = false;
                 rsp.msg = ex.Message;
             }
-
-
             return Ok(rsp);
         }
 
-        // GET api/<LibroController>/5
-      
+        [HttpPost]
+        [Route("IniciarSesion")]
 
-        // POST api/<LibroController>
+        public async Task<IActionResult> IniciarSesion([FromBody] Usuario login)
+        {
+            var rsp = new Response<Usuario>();
+            try
+            {
+                rsp.Status = true;
+                rsp.value = await _usuarioService.ValidarCredenciales(login.Correo, login.Contrasena);
+
+            }
+            catch (Exception ex)
+            {
+                rsp.Status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
+
         [HttpPost]
         [Route("Guardar")]
-        public async Task<IActionResult> Guardar([FromBody] Libro libro)
+
+        public async Task<IActionResult> Guardar([FromBody] Usuario usuario)
         {
-            var rsp = new Response<Libro>();
+            var rsp = new Response<Usuario>();
             try
             {
                 rsp.Status = true;
-                rsp.value = await _libroService.Crear(libro);
+                rsp.value = await _usuarioService.Crear(usuario);
 
             }
             catch (Exception ex)
@@ -64,16 +78,17 @@ namespace APIBiblioteca.Controllers
             return Ok(rsp);
         }
 
-        // PUT api/<LibroController>/5
+
         [HttpPut]
         [Route("Editar")]
-        public async Task<IActionResult> Editar([FromBody] Libro libro)
+
+        public async Task<IActionResult> Editar([FromBody] Usuario usuario)
         {
             var rsp = new Response<bool>();
             try
             {
                 rsp.Status = true;
-                rsp.value = await _libroService.Editar(libro);
+                rsp.value = await _usuarioService.Editar(usuario);
 
             }
             catch (Exception ex)
@@ -82,20 +97,20 @@ namespace APIBiblioteca.Controllers
                 rsp.msg = ex.Message;
             }
             return Ok(rsp);
-
         }
 
-        // DELETE api/<LibroController>/5
+
         [HttpDelete]
         [Route("Eliminar/{id:int}")]
-        public async Task<IActionResult> Delete(int id)
+
+        public async Task<IActionResult> Eliminar(int id)
         {
             var rsp = new Response<bool>();
 
             try
             {
                 rsp.Status = true;
-                rsp.value = await _libroService.Eliminar(id);
+                rsp.value = await _usuarioService.Eliminar(id);
 
             }
             catch (Exception ex)

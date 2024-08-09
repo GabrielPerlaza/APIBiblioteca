@@ -4,22 +4,21 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using APIBiblioteca.Repository.Contrato;
 using System.Globalization;
 
 namespace APIBiblioteca.Services
 {
     public class PrestamoService
     {
-        private readonly GenericRepository<DetallePrestamo> _dpRepository;
+        private readonly IGenericRepository<DetallePrestamo> _dpRepository;
         private readonly PrestamoRepository _prestamoRepository;
-        private readonly IMapper _mapper;
 
 
-        public PrestamoService(GenericRepository<DetallePrestamo> dpRepository, PrestamoRepository prestamoRepository, IMapper mapper)
+        public PrestamoService(IGenericRepository<DetallePrestamo> dpRepository, PrestamoRepository prestamoRepository)
         {
             _prestamoRepository = prestamoRepository;
             _dpRepository = dpRepository;
-            _mapper = mapper;
         }
 
         public async Task<Prestamo> Registrar(Prestamo modelo)

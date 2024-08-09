@@ -1,13 +1,15 @@
 ﻿using APIBiblioteca.LibraryDbContext;
+using APIBiblioteca.Repository.Contrato;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace APIBiblioteca.Repository
 {
-    public class GenericRepository<Tmodelo> where Tmodelo : class
+    public class GenericRepository<Tmodelo> : IGenericRepository<Tmodelo> where Tmodelo : class
     {
         private readonly BibliotecaDbContext _bibliotecaDbContext;
+
 
         public GenericRepository(BibliotecaDbContext bibliotecaDbContext)
         {

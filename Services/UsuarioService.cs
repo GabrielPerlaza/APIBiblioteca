@@ -1,14 +1,14 @@
 ﻿using APIBiblioteca.Model;
 using APIBiblioteca.Repository;
 using Microsoft.EntityFrameworkCore;
-
+using APIBiblioteca.Repository.Contrato;
 namespace APIBiblioteca.Services
 {
     public class UsuarioService
     {
-        private readonly GenericRepository<Usuario> _usuarioRepository;
+        private readonly IGenericRepository<Usuario> _usuarioRepository;
 
-        public UsuarioService(GenericRepository<Usuario> usuarioRepository)
+        public UsuarioService(IGenericRepository<Usuario> usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
         }

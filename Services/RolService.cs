@@ -1,15 +1,16 @@
 ﻿using APIBiblioteca.Model;
 using APIBiblioteca.Repository;
 using AutoMapper;
+using APIBiblioteca.Repository.Contrato;
 
 namespace APIBiblioteca.Services
 {
     public class RolService
     {
-        private readonly GenericRepository<Rol> _rolRepository;
+        private readonly IGenericRepository<Rol> _rolRepository;
         private readonly IMapper _mapper;
 
-        public RolService(GenericRepository<Rol> rolRepository)
+        public RolService(IGenericRepository<Rol> rolRepository)
         {
             _rolRepository = rolRepository;
 
